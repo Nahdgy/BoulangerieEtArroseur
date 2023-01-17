@@ -11,11 +11,17 @@ namespace BoulangerieEtArroseur.Comparaisons.Source
          *      0       1       2
          *      0.6     0.8     1.0
          */
-        float[] boulangeries;
+        float[] boulangeries = { 0.6f, 0.8f, 1.0f };
+        float monnaie = 6.0f;
+        
+
+
+
 
         public ComparateurBoulangeries(float[] boulangeries)
         {
             this.boulangeries = boulangeries;
+            
         }
 
         /**
@@ -28,7 +34,21 @@ namespace BoulangerieEtArroseur.Comparaisons.Source
          */
         public int GetMeilleureBoulangerie()
         {
-            return 0;
+            int position = 0;
+            float prix = 10f;
+
+            for (int i = 0; i < boulangeries.Length; i++)
+            {
+                if (prix > boulangeries[i])
+                { 
+                    prix = boulangeries[i];
+                    position = i;
+                }
+                else
+                { continue; }
+            }
+            return position;
+
         }
 
         /**
@@ -45,6 +65,27 @@ namespace BoulangerieEtArroseur.Comparaisons.Source
          */
         public int GetNombreMaxBaguettes(float monnaie)
         {
+
+            float a = GetMeilleureBoulangerie();
+            int maxBaguette = 0;
+            float montant = 0;
+            for(int i = 0; i < maxBaguette; i++)
+            {
+                if(montant < monnaie)
+                {
+                    montant = montant + prix; 
+                    maxBaguette++;
+                }
+                    
+                else
+                { continue; }
+
+            }
+        
+            
+
+            
+
             return 0;
         }
     }
