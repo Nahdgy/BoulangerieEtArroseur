@@ -35,17 +35,16 @@ namespace BoulangerieEtArroseur.Comparaisons.Source
         public int GetMeilleureBoulangerie()
         {
             int position = 0;
-            float prix = 10f;
+            float prix = boulangeries[0];
 
-            for (int i = 0; i < boulangeries.Length; i++)
+            for (int i = 1; i < boulangeries.Length; i++)
             {
                 if (prix > boulangeries[i])
                 { 
                     prix = boulangeries[i];
                     position = i;
                 }
-                else
-                { continue; }
+                
             }
             return position;
 
@@ -65,28 +64,14 @@ namespace BoulangerieEtArroseur.Comparaisons.Source
          */
         public int GetNombreMaxBaguettes(float monnaie)
         {
-
-            float a = GetMeilleureBoulangerie();
-            int maxBaguette = 0;
-            float montant = 0;
-            for(int i = 0; i < maxBaguette; i++)
-            {
-                if(montant < monnaie)
-                {
-                    montant = montant + prix; 
-                    maxBaguette++;
-                }
-                    
-                else
-                { continue; }
-
-            }
-        
+            int position = GetMeilleureBoulangerie();
+            float prix = boulangeries[position];
             
+            //Calcul (if,esle) 
+            return prix == 0? int.MaxValue: (int)Math.Floor(monnaie / prix);
 
-            
 
-            return 0;
         }
+
     }
 }
